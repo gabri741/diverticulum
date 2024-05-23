@@ -37,11 +37,6 @@ public class JogadorResource {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public ResponseEntity<Jogador> criarJogador(@RequestBody Jogador jogador) {
-        Jogador novoJogador = jogadorService.criarJogador(jogador);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoJogador);
-    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Jogador> atualizarJogador(@PathVariable String id, @RequestBody Jogador jogador) {
