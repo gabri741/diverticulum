@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.gmsoftware.diverticulum.api.model.RegisterDTO;
 import com.gmsoftware.diverticulum.domain.model.Jogador;
@@ -24,8 +26,8 @@ public class JogadorService {
         return jogadorRepository.findAll();
     }
 
-    public Optional<Jogador> buscarJogadorPorId(String id) {
-        return jogadorRepository.findById(id);
+    public Jogador buscarJogadorPorId(String id) {
+        return jogadorRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
     
     @Transactional
@@ -38,10 +40,15 @@ public class JogadorService {
                 .idUsuario(user.getId())
                 .nickname(body.nickname())
                 .nome(body.nome())
+                .pontuacao(400L)
                 .build();
                 
         
       jogadorRepository.save(jogador);
+    }
+    
+    public void save(Jogador jogador) {
+       jogadorRepository.save(jogador);
     }
     
 

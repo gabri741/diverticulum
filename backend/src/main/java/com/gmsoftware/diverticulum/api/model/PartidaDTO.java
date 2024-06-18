@@ -1,12 +1,16 @@
 package com.gmsoftware.diverticulum.api.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PartidaDTO {
 
-    private String jogador1;
+    private String jogadorUm;
 
-    private String jogador2;
+    private String jogadorDois;
 
 }

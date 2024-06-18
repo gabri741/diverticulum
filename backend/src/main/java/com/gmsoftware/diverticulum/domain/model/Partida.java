@@ -5,21 +5,29 @@ import java.time.LocalDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Document(collection = "partidas")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Partida {
 
     @Id
     private String id;
 
-    private String idJogador1;
+    private String jogadorUm;
 
-    private String idJogador2;
+    private String jogadorDois;
 
     private String idVencedor;
 
     private LocalDate data;
+    
+    private Boolean finalizada;
 
 }

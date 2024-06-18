@@ -16,8 +16,8 @@ public class PartidaInputDisassembler {
     }
 
 
-    public Partida toDomainObject(PartidaDTO cidadeInput) {
-            return modelMapper.map(cidadeInput, Partida.class);
+    public Partida toDomainObject(PartidaDTO partida) {
+            return modelMapper.map(partida, Partida.class);
     }
     
 

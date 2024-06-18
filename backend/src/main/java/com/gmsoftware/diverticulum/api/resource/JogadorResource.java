@@ -32,9 +32,9 @@ public class JogadorResource {
 
     @GetMapping("/{id}")
     public ResponseEntity<Jogador> buscarJogadorPorId(@PathVariable String id) {
-        Optional<Jogador> jogador = jogadorService.buscarJogadorPorId(id);
-        return jogador.map(value -> ResponseEntity.ok().body(value))
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        Jogador jogador = jogadorService.buscarJogadorPorId(id);
+        return ResponseEntity.ok().body(jogador);
+                
     }
 
 
